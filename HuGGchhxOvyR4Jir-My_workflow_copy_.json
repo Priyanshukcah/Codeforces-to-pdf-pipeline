@@ -1,0 +1,391 @@
+{
+  "name": "My workflow copy++++",
+  "nodes": [
+    {
+      "parameters": {
+        "html_content": "=<style>\n  /* Base Booklet Styling */\n  body { \n    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; \n    color: #1a1a1a; \n    line-height: 1.7; \n    padding: 40px; \n    background-color: #ffffff; \n  }\n  .cover-header { \n    text-align: center; \n    padding: 60px 0 40px 0; \n    border-bottom: 5px solid #2980b9; \n    margin-bottom: 40px; \n  }\n  .cover-header h1 { font-size: 3em; color: #2c3e50; margin: 0; }\n  .cover-header p { font-size: 1.2em; color: #7f8c8d; }\n  \n  /* Typography */\n  h2 { color: #2980b9; font-size: 1.8em; border-bottom: 2px solid #ecf0f1; padding-bottom: 10px; margin-top: 0; }\n  h3 { color: #2c3e50; font-size: 1.3em; margin-top: 1.5em; margin-bottom: 0.5em; text-transform: uppercase; letter-spacing: 1px; }\n  h4 { color: #34495e; font-size: 1.1em; margin-bottom: 10px; }\n  .section-divider { border: 0; border-top: 2px solid #ecf0f1; margin: 30px 0; }\n  \n  /* Codeforces Raw Text Preservation */\n  .cf-text { \n    background-color: #ffffff; \n    font-size: 1.05em; \n    white-space: pre-wrap; /* Crucial: Keeps paragraph breaks intact */\n    word-wrap: break-word; \n    margin-bottom: 20px; \n  }\n  \n  /* Codeforces Authentic Input/Output Boxes */\n  .cf-box { \n    border: 1px solid #bdc3c7; \n    margin-bottom: 25px; \n    border-radius: 6px; \n    overflow: hidden; \n  }\n  .cf-title { \n    background-color: #f1f3f5; \n    padding: 8px 15px; \n    font-weight: bold; \n    font-size: 0.95em; \n    border-bottom: 1px solid #bdc3c7; \n    font-family: 'Consolas', 'Courier New', Courier, monospace; \n    color: #333; \n  }\n  .cf-pre { \n    background-color: #ffffff; \n    color: #000000; \n    padding: 15px; \n    margin: 0; \n    font-family: 'Consolas', 'Courier New', Courier, monospace; \n    white-space: pre-wrap; \n    word-wrap: break-word; \n    font-size: 1.1em;\n  }\n  \n  /* User and AI Coaching Sections */\n  .thought-box { background-color: #fff8e1; border-left: 6px solid #f1c40f; padding: 20px; margin-bottom: 25px; border-radius: 4px; font-style: italic; }\n  .ai-alignment { background-color: #e8f8f5; border-left: 6px solid #1abc9c; padding: 20px; margin-bottom: 25px; border-radius: 4px; }\n  .ai-hints { background-color: #ebf5fb; border-left: 6px solid #3498db; padding: 20px; border-radius: 4px; margin-bottom: 25px; }\n  .ai-hints ul { margin: 0; padding-left: 20px; }\n  .ai-hints li { margin-bottom: 10px; }\n  .ai-dry-run { background-color: #f5eef8; border-left: 6px solid #9b59b6; padding: 20px; margin-bottom: 25px; border-radius: 4px; }\n  \n  /* Code Editor Styling */\n  pre { \n    background-color: #282c34; \n    color: #abb2bf; \n    padding: 20px; \n    border-radius: 8px; \n    white-space: pre-wrap; \n    word-wrap: break-word; \n    overflow-x: auto; \n    font-family: 'Consolas', 'Courier New', Courier, monospace; \n    font-size: 0.95em;\n  }\n  code { font-family: 'Consolas', 'Courier New', Courier, monospace; }\n  \n  /* The Disclaimer */\n  .disclaimer-box { \n    margin-top: 40px; \n    padding: 20px; \n    background-color: #fdf2e9; \n    border-left: 6px solid #e67e22; \n    color: #d35400; \n    font-style: italic; \n    text-align: center; \n    border-radius: 4px; \n    font-size: 1em; \n    font-weight: bold;\n  }\n</style>\n\n<div class=\"cover-header\">\n  <h1>📘 Codeforces Master Guide</h1>\n  <p>Batch Analysis, Test Case Walkthroughs & Solutions</p>\n</div>\n\n{{ $json.output[0].content[0].text }}\n\n<div class=\"disclaimer-box\">\n  ⚠️ Note: The AI's analysis and code can contain logical errors. Please consider this guide as a learning assistant, not an absolutely perfect answer key.\n</div>",
+        "output_format": "file"
+      },
+      "type": "n8n-nodes-htmlcsstopdf.htmlcsstopdf",
+      "typeVersion": 1,
+      "position": [
+        832,
+        224
+      ],
+      "id": "20399f5e-7497-4e58-a065-dbdcb8838be0",
+      "name": "Convert HTML to PDF",
+      "credentials": {
+        "htmlcsstopdfApi": {
+          "id": "sKijkebGFdsN1bWa",
+          "name": "HTML to PDF account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ed265586-7dc5-4916-974b-a301efb97a22",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -336,
+        16
+      ],
+      "id": "42b4384b-808c-41dc-b0e7-462a7dacbbe4",
+      "name": "Webhook",
+      "webhookId": "ed265586-7dc5-4916-974b-a301efb97a22"
+    },
+    {
+      "parameters": {
+        "operation": "sendDocument",
+        "chatId": "8521911477",
+        "binaryData": true,
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1040,
+        48
+      ],
+      "id": "4bb6a3ce-b966-4d78-aab9-8d661c41d0d5",
+      "name": "Send a document",
+      "webhookId": "9b11487c-b89d-487e-9ef7-38907eaa34fc",
+      "credentials": {
+        "telegramApi": {
+          "id": "PFd0IATUrGLH5dJk",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "responses": {
+          "values": [
+            {
+              "content": "=\"Here is the batch of 5 problems. Please analyze them and generate the HTML study booklet exactly as instructed.\"\n"
+            },
+            {
+              "role": "system",
+              "content": "=You are a strict data-parser and an expert competitive programming coach. I am providing you with an array of 5 competitive programming problems scraped from Codeforces, including their raw text and the user's personal thoughts.\n\nCRITICAL DIRECTIVE: You are FORBIDDEN from summarizing, truncating, or omitting ANY part of the original problem text. You must extract every single sentence, every mathematical variable, every constraint, every exact sample input/output number, and the full 'Note' section.\n\nStructure the output as a single, raw HTML string formatted exactly like this:\n\n1. **Table of Contents:** An index linking to the 5 problem titles.\n2. **The Problems Loop:** For EACH of the 5 problems, output exactly this structure:\n   \n   <div class=\"problem-container\">\n     <h2>[Problem Title]</h2>\n     \n     <h3>Problem Statement</h3>\n     <div class=\"cf-text\">[VERBATIM: Insert the entire problem description here. Do not drop any words. Fix mangled math like \"n n\" to just \"n\"]</div>\n     \n     <h3>Input</h3>\n     <div class=\"cf-text\">[VERBATIM: Insert all input constraints and rules here.]</div>\n     \n     <h3>Output</h3>\n     <div class=\"cf-text\">[VERBATIM: Insert all output rules here.]</div>\n     \n     <h3>Examples</h3>\n     <div class=\"cf-box\">\n       <div class=\"cf-title\">Input</div>\n       <pre class=\"cf-pre\">[VERBATIM: Insert the EXACT sample input numbers from the text. Do not invent or skip them.]</pre>\n       <div class=\"cf-title\">Output</div>\n       <pre class=\"cf-pre\">[VERBATIM: Insert the EXACT sample output answers from the text.]</pre>\n     </div>\n     \n     <h3>Note</h3>\n     <div class=\"cf-text\">[VERBATIM: Insert the entire 'Note' section here. If there is no note, leave this div empty.]</div>\n     \n     <hr class=\"section-divider\">\n     \n     <h3>🤔 Your Thoughts</h3>\n     <div class=\"thought-box\">[Insert the User's Thought verbatim]</div>\n     // from here you have to give your process output as described in brackets below as an expert competitive programmer coach\n     <h3>🤖 AI Coach Analysis</h3>\n     <div class=\"ai-alignment\">[Read the User's Thought. Validate their specific logic, explain why they are stuck, and point them in the correct direction based heavily on their initial idea.]</div>\n     \n     <div class=\"ai-hints\">\n       <h4>Hints to progress:</h4>\n       <ul>\n         <li><strong>Hint 1:</strong> [First conceptual step]</li>\n         <li><strong>Hint 2:</strong> [Logical transition]</li>\n         <li><strong>Hint 3:</strong> [Final breakthrough before coding]</li>\n       </ul>\n     </div>\n     \n     <div class=\"ai-dry-run\">\n       <h4>Step-by-Step Test Case Walkthrough</h4>\n       <p>[Pick the first sample test case. Execute a manual \"dry run\" of your proposed logic step-by-step, explaining how the algorithm processes those specific numbers to reach the correct output.]</p>\n     </div>\n     \n     <div class=\"ai-solution\">\n       <h4>Optimal Solution</h4>\n       <pre><code>[Provide the final, highly-optimized, 100% compilable C++ code solution.]</code></pre>\n     </div>\n   </div>\n   <div style=\"page-break-after: always;\"></div>\n\nHere is the data for the 5 problems:\n{{ JSON.stringify($input.all().map(i => i.json)) }}\n\nOutput STRICTLY raw HTML. DO NOT start with ```html or markdown formatting. Start directly with the HTML tags."
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        592,
+        -32
+      ],
+      "id": "684db1e4-181d-41c8-973b-9237e5c65e39",
+      "name": "Message a model",
+      "credentials": {
+        "openAiApi": {
+          "id": "RRcGnysVOGev2aiA",
+          "name": "n8n free OpenAI API credits"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1u7O1EoPVTV95e6xAh--qIGNKCWJ7VJSZD-AODPFhzLs",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1u7O1EoPVTV95e6xAh--qIGNKCWJ7VJSZD-AODPFhzLs/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1u7O1EoPVTV95e6xAh--qIGNKCWJ7VJSZD-AODPFhzLs/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Problem Text": "={{ $json.body.problem_text }}",
+            "User Thoughts": "={{ $json.body.user_thoughts }}",
+            "Title": "={{ $json.body.title }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Problem Text",
+              "displayName": "Problem Text",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "User Thoughts",
+              "displayName": "User Thoughts",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Title",
+              "displayName": "Title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -112,
+        224
+      ],
+      "id": "d135b90b-61bd-48ba-b893-146ab28181bb",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DmMnXUXkl2tpWKDi",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1u7O1EoPVTV95e6xAh--qIGNKCWJ7VJSZD-AODPFhzLs",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1u7O1EoPVTV95e6xAh--qIGNKCWJ7VJSZD-AODPFhzLs/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1u7O1EoPVTV95e6xAh--qIGNKCWJ7VJSZD-AODPFhzLs/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        80,
+        16
+      ],
+      "id": "515be169-ebf5-42dc-b435-3e92881abc0e",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DmMnXUXkl2tpWKDi",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "9c1a3170-acdb-4ac9-a5e2-aa14371f7231",
+              "leftValue": "={{ $input.all().length }}",
+              "rightValue": 2,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        288,
+        256
+      ],
+      "id": "ce54c328-d852-42e7-8392-9964582b498c",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        416,
+        80
+      ],
+      "id": "0902c560-810c-4f0c-b311-8dda8fe5ae83",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "documentId": {
+          "__rl": true,
+          "value": "1u7O1EoPVTV95e6xAh--qIGNKCWJ7VJSZD-AODPFhzLs",
+          "mode": "list",
+          "cachedResultName": "Database",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1u7O1EoPVTV95e6xAh--qIGNKCWJ7VJSZD-AODPFhzLs/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1u7O1EoPVTV95e6xAh--qIGNKCWJ7VJSZD-AODPFhzLs/edit#gid=0"
+        },
+        "numberToDelete": 5
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1232,
+        224
+      ],
+      "id": "4693e4a3-fdca-4f40-b8e0-003f36577d13",
+      "name": "Delete rows or columns from sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DmMnXUXkl2tpWKDi",
+          "name": "Google Sheets OAuth2 API"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Convert HTML to PDF": {
+      "main": [
+        [
+          {
+            "node": "Send a document",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Convert HTML to PDF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a document": {
+      "main": [
+        [
+          {
+            "node": "Delete rows or columns from sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "staticData": null,
+  "pinData": {},
+  "triggerCount": 1,
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
+}
